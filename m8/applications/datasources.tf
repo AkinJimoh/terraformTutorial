@@ -5,7 +5,7 @@
 data "consul_keys" "applications" {
   key {
       name = "applications"
-      path = terraform.workspace == "default" ? "applications/configuration/anna1/app_info" : "applications/configuration/globo-primary/${terraform.workspace}/app_info"
+      path = terraform.workspace == "default" ? "applications/configuration/anna1/app_info" : "applications/configuration/anna1/${terraform.workspace}/app_info"
   }
   
   key {
@@ -20,7 +20,7 @@ data "terraform_remote_state" "networking" {
   config = {
     address = "${var.consul_address}:8500"
     scheme = "http"
-    path     = terraform.workspace == "default" ? "networking/state/anna1" : "networking/state/globo-primary-env:${terraform.workspace}"
+    path     = terraform.workspace == "default" ? "networking/state/anna1" : "networking/state/anna1-env:${terraform.workspace}"
   }
 }
 
