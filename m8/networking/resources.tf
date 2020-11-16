@@ -21,7 +21,7 @@ data "aws_availability_zones" "available" {}
 data "consul_keys" "networking" {
   key {
       name = "networking"
-      path = terraform.workspace == "default" ? "networking/configuration/anna1/net_info" : "networking/configuration/globo-primary/${terraform.workspace}/net_info"
+      path = terraform.workspace == "default" ? "networking/configuration/anna1/net_info" : "networking/configuration/anna1/${terraform.workspace}/net_info"
   }
   
   key {
